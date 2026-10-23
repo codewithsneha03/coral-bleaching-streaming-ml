@@ -1,0 +1,53 @@
+ADAPTIVE RANDOM FOREST CLASSIFIER
+============================================================
+Model:  ARFClassifier(n_models=10, max_features='sqrt', seed=42)
+Stream: 11,889 observations, chronological order
+Evaluated predictions: 11,888
+Skipped (cold start):  1
+
+METRICS (prequential / test-then-train)
+----------------------------------------
+Accuracy:   0.9245
+Precision:  0.9397
+Recall:     0.9741
+F1 Score:   0.9566
+
+Naive baseline (always predict 1): 0.8552 accuracy
+Improvement over naive: +0.0693
+
+CONFUSION MATRIX
+    0       1      
+0   1,087     635  
+1     263   9,903  
+
+PERFORMANCE BY YEAR
+----------------------------------------
+  1983:    15 obs, acc=1.000, bleach_rate=1.000
+  1987:    18 obs, acc=1.000, bleach_rate=1.000
+  1988:     6 obs, acc=1.000, bleach_rate=1.000
+  1991:     7 obs, acc=1.000, bleach_rate=1.000
+  1992:     8 obs, acc=1.000, bleach_rate=1.000
+  1993:     9 obs, acc=1.000, bleach_rate=1.000
+  1994:    19 obs, acc=1.000, bleach_rate=1.000
+  1995:     6 obs, acc=1.000, bleach_rate=1.000
+  1996:    27 obs, acc=1.000, bleach_rate=1.000
+  1997:    20 obs, acc=1.000, bleach_rate=1.000
+  1998:   855 obs, acc=0.996, bleach_rate=0.996
+  1999:   747 obs, acc=0.933, bleach_rate=0.889
+  2000:   615 obs, acc=0.857, bleach_rate=0.636
+  2001:   726 obs, acc=0.796, bleach_rate=0.446
+  2002:   859 obs, acc=0.906, bleach_rate=0.825
+  2003:   443 obs, acc=0.849, bleach_rate=0.661
+  2004:   223 obs, acc=0.928, bleach_rate=0.722
+  2005: 2,598 obs, acc=1.000, bleach_rate=1.000
+  2006: 1,077 obs, acc=0.954, bleach_rate=0.953
+  2007:   256 obs, acc=0.922, bleach_rate=0.922
+  2008:   511 obs, acc=0.785, bleach_rate=0.705
+  2009:   532 obs, acc=0.863, bleach_rate=0.786
+  2010:   533 obs, acc=0.897, bleach_rate=0.784
+  2011:   264 obs, acc=0.947, bleach_rate=0.894
+  2012:   260 obs, acc=0.835, bleach_rate=0.823
+  2013:   238 obs, acc=0.874, bleach_rate=0.735
+  2014:   190 obs, acc=0.958, bleach_rate=0.958
+  2015:   297 obs, acc=0.966, bleach_rate=0.919
+  2016:   522 obs, acc=0.941, bleach_rate=0.948

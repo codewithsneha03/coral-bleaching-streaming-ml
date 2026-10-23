@@ -1,0 +1,84 @@
+
+========================================================================
+severity_code_counts
+
+ Severity_Code       Severity_Description  Records
+           NaN                        NaN    27878
+          -1.0                  % unknown      530
+           0.0               No Bleaching      332
+           1.0      Mild (1-10% Bleached)     2237
+           2.0 Moderate (11-50% Bleached)     2007
+           3.0     Severe (>50% Bleached)     1862
+
+========================================================================
+prevalence_counts
+
+ Bleaching_Prevalence_Score    Prevalence_Description  Records
+                        NaN                       NaN    34765
+                        0.0              No Bleaching       21
+                        1.0 <= 10% Reef Area Bleached       25
+                        2.0 10-25% Reef Area Bleached        7
+                        3.0 25-50% Reef Area Bleached        6
+                        4.0   >50% Reef Area Bleached       22
+
+========================================================================
+bleaching_fields_summary
+
+ total_rows  distinct_sample_ids  severity_not_null  prevalence_not_null  percent_bleached_not_null  intensity_not_null
+      34846                23805               6968                   81                       8961                 226
+
+========================================================================
+environment_fields_summary
+
+ total_rows  distinct_sample_ids  ClimSST_not_null  SSTA_not_null  SSTA_DHW_not_null  Temperature_Mean_not_null
+      26962                26945             26958          26934              26934                      26943
+
+========================================================================
+sample_date_summary
+
+ total_rows  distinct_sample_ids  min_year  max_year  rows_with_full_date
+      27008                27008    1980.0    2020.0                27008
+
+========================================================================
+join_counts
+
+ sample_rows  bleaching_rows  environmental_rows  sample_bleaching_join_rows  sample_environment_join_rows  all_three_join_rows
+       27008           34846               26962                       34846                         26962                34784
+
+========================================================================
+key_check_Sample_Event_tbl
+
+ rows  distinct_sample_ids  duplicate_key_excess
+27008                27008                     0
+
+========================================================================
+key_check_Bleaching_tbl
+
+ rows  distinct_sample_ids  duplicate_key_excess
+34846                23805                 11041
+
+========================================================================
+key_check_Environmental_tbl
+
+ rows  distinct_sample_ids  duplicate_key_excess
+26962                26945                    17
+
+========================================================================
+bleaching_target_sample
+
+ Sample_ID  Severity_Code Percent_Bleached bleach_intensity Bleaching_Prevalence_Score
+      9623              3             None             None                       None
+      9624              3             None             None                       None
+      9625              0             None             None                       None
+      9626              2             None             None                       None
+      9627              3             None             None                       None
+      9628              3             None             None                       None
+      9629              1             None             None                       None
+      9630              1             None             None                       None
+      9631              2             None             None                       None
+      9632              0             None             None                       None
+      9633              2             None             None                       None
+      9634              2             None             None                       None
+      9635              0             None             None                       None
+      9636              2             None             None                       None
+      9637              1             None             None                       None

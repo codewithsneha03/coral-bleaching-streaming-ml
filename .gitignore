@@ -1,0 +1,23 @@
+# Virtual environment
+.venv/
+venv/
+ENV/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Raw data (downloaded GCBD SQLite database - 22MB)
+data/raw/*
+!data/raw/.gitkeep
+
+# Processed data (reproducible from src/03_build_dataset.py and src/04_prepare_stream.py)
+data/processed/*
+!data/processed/.gitkeep
+
+# IDE / Editor configuration
+.vscode/
+.idea/
+*.swp
+*.swo

@@ -1,0 +1,7 @@
+Bleaching_Prevalence_Score,Prevalence_Description,Records
+,,34765
+0.0,No Bleaching,21
+1.0,<= 10% Reef Area Bleached,25
+2.0,10-25% Reef Area Bleached,7
+3.0,25-50% Reef Area Bleached,6
+4.0,>50% Reef Area Bleached,22

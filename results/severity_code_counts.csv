@@ -1,0 +1,7 @@
+Severity_Code,Severity_Description,Records
+,,27878
+-1.0,% unknown,530
+0.0,No Bleaching,332
+1.0,Mild (1-10% Bleached),2237
+2.0,Moderate (11-50% Bleached),2007
+3.0,Severe (>50% Bleached),1862

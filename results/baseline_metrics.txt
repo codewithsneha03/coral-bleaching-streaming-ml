@@ -1,0 +1,53 @@
+BASELINE MODEL: Online Logistic Regression
+============================================================
+Model:  StandardScaler | LogisticRegression
+Stream: 11,889 observations, chronological order
+Evaluated predictions: 11,889
+Skipped (cold start):  0
+
+METRICS (prequential / test-then-train)
+----------------------------------------
+Accuracy:   0.8985
+Precision:  0.9259
+Recall:     0.9580
+F1 Score:   0.9417
+
+Naive baseline (always predict 1): 0.8552 accuracy
+Improvement over naive: +0.0433
+
+CONFUSION MATRIX
+    0     1      
+0   942     780  
+1   427   9,740  
+
+PERFORMANCE BY YEAR
+----------------------------------------
+  1983:    15 obs, acc=0.733, bleach_rate=1.000
+  1987:    18 obs, acc=1.000, bleach_rate=1.000
+  1988:     6 obs, acc=1.000, bleach_rate=1.000
+  1991:     7 obs, acc=0.857, bleach_rate=1.000
+  1992:     8 obs, acc=1.000, bleach_rate=1.000
+  1993:     9 obs, acc=1.000, bleach_rate=1.000
+  1994:    19 obs, acc=1.000, bleach_rate=1.000
+  1995:     6 obs, acc=0.833, bleach_rate=1.000
+  1996:    27 obs, acc=0.852, bleach_rate=1.000
+  1997:    20 obs, acc=0.750, bleach_rate=1.000
+  1998:   855 obs, acc=0.958, bleach_rate=0.996
+  1999:   747 obs, acc=0.909, bleach_rate=0.889
+  2000:   615 obs, acc=0.673, bleach_rate=0.636
+  2001:   726 obs, acc=0.726, bleach_rate=0.446
+  2002:   859 obs, acc=0.909, bleach_rate=0.825
+  2003:   443 obs, acc=0.722, bleach_rate=0.661
+  2004:   223 obs, acc=0.910, bleach_rate=0.722
+  2005: 2,598 obs, acc=0.997, bleach_rate=1.000
+  2006: 1,077 obs, acc=0.950, bleach_rate=0.953
+  2007:   256 obs, acc=0.930, bleach_rate=0.922
+  2008:   511 obs, acc=0.787, bleach_rate=0.705
+  2009:   532 obs, acc=0.870, bleach_rate=0.786
+  2010:   533 obs, acc=0.895, bleach_rate=0.784
+  2011:   264 obs, acc=0.943, bleach_rate=0.894
+  2012:   260 obs, acc=0.838, bleach_rate=0.823
+  2013:   238 obs, acc=0.807, bleach_rate=0.735
+  2014:   190 obs, acc=0.968, bleach_rate=0.958
+  2015:   297 obs, acc=0.953, bleach_rate=0.919
+  2016:   522 obs, acc=0.948, bleach_rate=0.948

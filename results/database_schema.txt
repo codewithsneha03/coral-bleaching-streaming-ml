@@ -1,0 +1,471 @@
+CORAL BLEACHING PROJECT — DATABASE SCHEMA REPORT
+Database: C:\Users\Sneha\Downloads\coral_bleaching_project_starter\coral_bleaching_project\data\raw\Global_Coral_Bleaching_Database_SQLite_11_24_21.db
+
+Number of tables: 26
+TABLE LIST
+ - Authors_LUT
+ - Bleaching_Level_LUT
+ - Bleaching_Prevalence_Score_LUT
+ - Bleaching_tbl
+ - City_Town_Name_LUT
+ - Country_Name_LUT
+ - Cover_tbl
+ - Data_Source_LUT
+ - Ecoregion_Name_LUT
+ - Environmental_tbl
+ - Exposure_LUT
+ - Ocean_Name_LUT
+ - Query_2_Sample_Event_Counts
+ - Query_3_Time_Series
+ - Query_4_Samples_by_Data_Source
+ - Query_5_Sites_by_Data_Source
+ - Query_6_Sites_with_Multiple_Sample_Events
+ - R_Scripts_tbl
+ - Realm_Name_LUT
+ - Sample_Event_tbl
+ - Severity_Code_LUT
+ - Site_Info_tbl
+ - State_Island_Province_Name_LUT
+ - Subquery_1_Sites_and_Sample_Events
+ - Subquery_6_Calculated_Reef_Check_Segments
+ - Substrate_Type_LUT
+
+========================================================================
+TABLE: Authors_LUT
+Columns: cid | name | type | notnull | default | primary_key
+0 | Authors_ID | INTEGER | 1 | None | 1
+1 | Last_Name | VARCHAR(255) | 0 | None | 0
+2 | First_Name | VARCHAR(255) | 0 | None | 0
+3 | Middle_Initial | VARCHAR(255) | 0 | None | 0
+4 | TRIAL485 | CHAR(1) | 0 | None | 0
+Row count: 38
+Sample rows (up to 3):
+  (91, 'Barshis', 'Daniel', 'J', 'T')
+  (185, 'Burkepile', 'Deron', 'E', 'T')
+  (291, 'Davis', 'Kristen', 'A', 'T')
+
+========================================================================
+TABLE: Bleaching_Level_LUT
+Columns: cid | name | type | notnull | default | primary_key
+0 | Bleaching_Level_ID | INTEGER | 1 | None | 1
+1 | Bleaching_Level | VARCHAR(255) | 0 | None | 0
+2 | TRIAL485 | CHAR(1) | 0 | None | 0
+Row count: 2
+Sample rows (up to 3):
+  (1, 'Population', 'T')
+  (2, 'Colony', 'T')
+
+========================================================================
+TABLE: Bleaching_Prevalence_Score_LUT
+Columns: cid | name | type | notnull | default | primary_key
+0 | Bleaching_Prevalence_ID | INTEGER | 1 | 0 | 1
+1 | Bleaching_Prevalence_Score | VARCHAR(255) | 0 | None | 0
+2 | TRIAL485 | CHAR(1) | 0 | None | 0
+Row count: 5
+Sample rows (up to 3):
+  (0, 'No Bleaching', 'T')
+  (1, '<= 10% Reef Area Bleached', 'T')
+  (2, '10-25% Reef Area Bleached', 'T')
+
+========================================================================
+TABLE: Bleaching_tbl
+Columns: cid | name | type | notnull | default | primary_key
+0 | Bleaching_ID | INTEGER | 1 | None | 1
+1 | Sample_ID | INTEGER | 0 | 0 | 0
+2 | Bleaching_Level | INTEGER | 0 | 0 | 0
+3 | S1 | REAL | 0 | None | 0
+4 | S2 | REAL | 0 | None | 0
+5 | S3 | REAL | 0 | None | 0
+6 | S4 | REAL | 0 | None | 0
+7 | Percent_Bleaching_Old_Method | REAL | 0 | None | 0
+8 | Severity_Code | INTEGER | 0 | 0 | 0
+9 | Percent_Bleached | REAL | 0 | None | 0
+10 | Number__Bleached_Colonies | VARCHAR(255) | 0 | None | 0
+11 | bleach_intensity | INTEGER | 0 | 0 | 0
+12 | Bleaching_Prevalence_Score | INTEGER | 0 | 0 | 0
+13 | TRIAL485 | CHAR(1) | 0 | None | 0
+Row count: 34846
+Sample rows (up to 3):
+  (9623, 9623, None, None, None, None, None, None, 3, None, None, None, None, 'T')
+  (9624, 9624, None, None, None, None, None, None, 3, None, None, None, None, 'T')
+  (9625, 9625, None, None, None, None, None, None, 0, None, None, None, None, 'T')
+
+========================================================================
+TABLE: City_Town_Name_LUT
+Columns: cid | name | type | notnull | default | primary_key
+0 | City_Town_ID | INTEGER | 1 | None | 1
+1 | City_Town_Name | VARCHAR(255) | 0 | None | 0
+2 | TRIAL495 | CHAR(1) | 0 | None | 0
+Row count: 4637
+Sample rows (up to 3):
+  (1, 'Cassini Island', 'T')
+  (2, 'Castara', 'T')
+  (3, 'Castle Harbour', 'T')
+
+========================================================================
+TABLE: Country_Name_LUT
+Columns: cid | name | type | notnull | default | primary_key
+0 | Country_ID | INTEGER | 1 | None | 1
+1 | Country_Name | VARCHAR(255) | 0 | None | 0
+2 | TRIAL495 | CHAR(1) | 0 | None | 0
+Row count: 96
+Sample rows (up to 3):
+  (1, 'American Samoa', 'T')
+  (2, 'Anguilla', 'T')
+  (3, 'Antigua and Barbuda', 'T')
+
+========================================================================
+TABLE: Cover_tbl
+Columns: cid | name | type | notnull | default | primary_key
+0 | Cover_ID | INTEGER | 1 | None | 1
+1 | Sample_ID | INTEGER | 0 | 0 | 0
+2 | Percent_Hard_Coral | REAL | 0 | 0 | 0
+3 | Percent_Macroalgae | REAL | 0 | 0 | 0
+4 | Substrate_Type | INTEGER | 0 | 0 | 0
+5 | S1 | INTEGER | 0 | 0 | 0
+6 | S2 | INTEGER | 0 | 0 | 0
+7 | S3 | INTEGER | 0 | 0 | 0
+8 | S4 | INTEGER | 0 | 0 | 0
+9 | Comments | VARCHAR(255) | 0 | None | 0
+10 | TRIAL495 | CHAR(1) | 0 | None | 0
+Row count: 31310
+Sample rows (up to 3):
+  (22558, 10290512, 9.47, 41.84, None, None, None, None, None, None, 'T')
+  (22559, 10290513, 14.76, 51.43, None, None, None, None, None, None, 'T')
+  (22560, 10290514, 65.5, 11.6, None, None, None, None, None, None, 'T')
+
+========================================================================
+TABLE: Data_Source_LUT
+Columns: cid | name | type | notnull | default | primary_key
+0 | Data_Source_ID | INTEGER | 1 | None | 1
+1 | Data_Source | VARCHAR(255) | 0 | None | 0
+2 | Sample_Method | VARCHAR(255) | 0 | None | 0
+3 | TRIAL501 | CHAR(1) | 0 | None | 0
+Row count: 7
+Sample rows (up to 3):
+  (1, 'McClanahan', 'Source uses an amalgamation of techniques', 'T')
+  (2, 'FRRP', '1-m wide belt transects, counting all corals >= 4 cm in each of two, 10 x 1m2 belts', 'T')
+  (3, 'AGRRA', '1-m wide belt transects, counting all corals >= 4 cm in each of two, 10 x 1m2 belts', 'T')
+
+========================================================================
+TABLE: Ecoregion_Name_LUT
+Columns: cid | name | type | notnull | default | primary_key
+0 | Ecoregion_ID | INTEGER | 1 | None | 1
+1 | Ecoregion_Name | VARCHAR(255) | 0 | None | 0
+2 | TRIAL501 | CHAR(1) | 0 | None | 0
+Row count: 117
+Sample rows (up to 3):
+  (1, 'Andaman Islands', 'T')
+  (2, 'Andaman Sea', 'T')
+  (3, 'Arnhem Land, north Australia', 'T')
+
+========================================================================
+TABLE: Environmental_tbl
+Columns: cid | name | type | notnull | default | primary_key
+0 | Environmental_ID | INTEGER | 1 | None | 1
+1 | Sample_ID | INTEGER | 0 | 0 | 0
+2 | ClimSST | REAL | 0 | None | 0
+3 | Temperature_Kelvin | REAL | 0 | None | 0
+4 | Temperature_Mean | REAL | 0 | None | 0
+5 | Temperature_Minimum | REAL | 0 | None | 0
+6 | Temperature_Maximum | REAL | 0 | None | 0
+7 | Temperature_Kelvin_Standard_Deviation | REAL | 0 | None | 0
+8 | Windspeed | REAL | 0 | None | 0
+9 | SSTA | REAL | 0 | None | 0
+10 | SSTA_Standard_Deviation | REAL | 0 | None | 0
+11 | SSTA_Mean | REAL | 0 | None | 0
+12 | SSTA_Minimum | REAL | 0 | None | 0
+13 | SSTA_Maximum | REAL | 0 | None | 0
+14 | SSTA_Frequency | REAL | 0 | None | 0
+15 | SSTA_Frequency_Standard_Deviation | REAL | 0 | None | 0
+16 | SSTA_FrequencyMax | REAL | 0 | None | 0
+17 | SSTA_FrequencyMean | REAL | 0 | None | 0
+18 | SSTA_DHW | REAL | 0 | None | 0
+19 | SSTA_DHW_Standard_Deviation | REAL | 0 | None | 0
+20 | SSTA_DHWMax | REAL | 0 | None | 0
+21 | SSTA_DHWMean | REAL | 0 | None | 0
+22 | TSA | REAL | 0 | None | 0
+23 | TSA_Standard_Deviation | REAL | 0 | None | 0
+24 | TSA_Minimum | REAL | 0 | None | 0
+25 | TSA_Maximum | REAL | 0 | None | 0
+26 | TSA_Mean | REAL | 0 | None | 0
+27 | TSA_Frequency | REAL | 0 | None | 0
+28 | TSA_Frequency_Standard_Deviation | REAL | 0 | None | 0
+29 | TSA_FrequencyMax | REAL | 0 | None | 0
+30 | TSA_FrequencyMean | REAL | 0 | None | 0
+31 | TSA_DHW | REAL | 0 | None | 0
+32 | TSA_DHW_Standard_Deviation | REAL | 0 | None | 0
+33 | TSA_DHWMax | REAL | 0 | None | 0
+34 | TSA_DHWMean | REAL | 0 | None | 0
+35 | TRIAL501 | CHAR(1) | 0 | None | 0
+Row count: 26962
+Sample rows (up to 3):
+  (9622, 9623, 299.48, 301.3, 298.85, 293.85, 304.38, 2.48, 8.0, -0.21, 0.92, 0.0, -3.62777777777778, 3.16, 33.0, 6.56, 36.0, 6.0, 11.5, 3.7, 22.72, 2.48, -0.92, 2.48, -8.36, 2.15, -3.36, 6.0, 1.26, 6.0, 1.0, 6.88, 0.95, 6.88, 0.35, 'T')
+  (9623, 9624, 299.92, 302.17, 298.93, 294.13, 305.1, 2.46, 5.0, 0.45, 0.93, 0.0, -3.32285714285714, 3.05, 28.0, 6.15, 31.0, 7.0, 14.57, 3.29, 17.68, 2.57, -0.03, 2.46, -8.06, 2.89, -3.26, 4.0, 1.42, 6.0, 1.0, 8.24, 1.44, 8.23, 0.52, 'T')
+  (9624, 9625, 302.2, 300.94, 298.93, 294.13, 305.1, 2.46, 6.0, -0.5, 0.93, 0.0, -3.32285714285714, 3.05, 4.0, 6.15, 31.0, 7.0, 0.0, 3.29, 17.68, 2.57, -1.26, 2.46, -8.06, 2.89, -3.26, 0.0, 1.42, 6.0, 1.0, 0.0, 1.44, 8.23, 0.52, 'T')
+
+========================================================================
+TABLE: Exposure_LUT
+Columns: cid | name | type | notnull | default | primary_key
+0 | Exposure_ID | REAL | 1 | 0 | 1
+1 | Exposure | VARCHAR(255) | 0 | None | 0
+2 | TRIAL524 | CHAR(1) | 0 | None | 0
+Row count: 3
+Sample rows (up to 3):
+  (0.0, 'Sheltered', 'T')
+  (1.0, 'Sometimes', 'T')
+  (2.0, 'Exposed', 'T')
+
+========================================================================
+TABLE: Ocean_Name_LUT
+Columns: cid | name | type | notnull | default | primary_key
+0 | Ocean_ID | INTEGER | 1 | None | 1
+1 | Ocean_Name | VARCHAR(255) | 0 | None | 0
+2 | TRIAL524 | CHAR(1) | 0 | None | 0
+Row count: 5
+Sample rows (up to 3):
+  (1, 'Pacific', 'T')
+  (2, 'Atlantic', 'T')
+  (3, 'Indian', 'T')
+
+========================================================================
+TABLE: Query_2_Sample_Event_Counts
+Columns: cid | name | type | notnull | default | primary_key
+0 | Site_ID | INTEGER | 1 | None | 0
+1 | CountOfSample_ID | INTEGER | 0 | None | 0
+2 | TRIAL541 | CHAR(1) | 0 | None | 0
+Row count: 1003
+Sample rows (up to 3):
+  (2, 7, 'T')
+  (4, 11, 'T')
+  (8, 8, 'T')
+
+========================================================================
+TABLE: Query_3_Time_Series
+Columns: cid | name | type | notnull | default | primary_key
+0 | Site_ID | INTEGER | 1 | None | 0
+1 | Sample_ID | INTEGER | 1 | None | 0
+2 | CountOfSample_ID | INTEGER | 0 | None | 0
+3 | Data_Source | VARCHAR(255) | 0 | None | 0
+4 | Latitude_Degrees | REAL | 0 | None | 0
+5 | Longitude_Degrees | REAL | 0 | None | 0
+6 | Site_Name | VARCHAR(255) | 0 | None | 0
+7 | Reef_ID | VARCHAR(255) | 0 | None | 0
+8 | Date_Day | REAL | 0 | None | 0
+9 | Date_Month | REAL | 0 | None | 0
+10 | Date_Year | REAL | 0 | None | 0
+11 | Depth_m | REAL | 0 | None | 0
+12 | TRIAL544 | CHAR(1) | 0 | None | 0
+Row count: 9793
+Sample rows (up to 3):
+  (6042, 10307625, 10, 'Reef_Check', 5.95238888888889, 102.708472222222, b'', '102.42.508E.5.57.143N', 21.0, 5.0, 2011.0, 9.1, 'T')
+  (6042, 10307626, 10, 'Reef_Check', 5.95238888888889, 102.708472222222, b'', '102.42.508E.5.57.143N', 21.0, 9.0, 2010.0, 5.0, 'T')
+  (6042, 10307627, 10, 'Reef_Check', 5.95238888888889, 102.708472222222, b'', '102.42.508E.5.57.143N', 5.0, 10.0, 2008.0, 5.0, 'T')
+
+========================================================================
+TABLE: Query_4_Samples_by_Data_Source
+Columns: cid | name | type | notnull | default | primary_key
+0 | Data_Source | VARCHAR(255) | 0 | None | 0
+1 | Sample_count | INTEGER | 0 | None | 0
+2 | TRIAL547 | CHAR(1) | 0 | None | 0
+Row count: 7
+Sample rows (up to 3):
+  ('AGRRA', 2847, 'T')
+  ('Donner', 6305, 'T')
+  ('FRRP', 2394, 'T')
+
+========================================================================
+TABLE: Query_5_Sites_by_Data_Source
+Columns: cid | name | type | notnull | default | primary_key
+0 | Data_Source | VARCHAR(255) | 0 | None | 0
+1 | Site_count | INTEGER | 0 | None | 0
+2 | TRIAL547 | CHAR(1) | 0 | None | 0
+Row count: 7
+Sample rows (up to 3):
+  ('AGRRA', 603, 'T')
+  ('Donner', 3802, 'T')
+  ('FRRP', 2299, 'T')
+
+========================================================================
+TABLE: Query_6_Sites_with_Multiple_Sample_Events
+Columns: cid | name | type | notnull | default | primary_key
+0 | Site_ID | INTEGER | 1 | None | 0
+1 | CountOfSample_ID | INTEGER | 0 | None | 0
+2 | Data_Source | VARCHAR(255) | 0 | None | 0
+3 | Latitude_Degrees | REAL | 0 | None | 0
+4 | Longitude_Degrees | REAL | 0 | None | 0
+5 | Ocean_Name | VARCHAR(255) | 0 | None | 0
+6 | Realm_Name | VARCHAR(255) | 0 | None | 0
+7 | Ecoregion_Name | VARCHAR(255) | 0 | None | 0
+8 | Country_Name | VARCHAR(255) | 0 | None | 0
+9 | State_Island_Province_Name | VARCHAR(255) | 0 | None | 0
+10 | Date_Day | REAL | 0 | None | 0
+11 | Date_Month | REAL | 0 | None | 0
+12 | Date_Year | REAL | 0 | None | 0
+13 | Depth_m | REAL | 0 | None | 0
+14 | TRIAL547 | CHAR(1) | 0 | None | 0
+Row count: 411
+Sample rows (up to 3):
+  (4, 2, 'Reef_Check', -19.1483333333333, 146.870277777778, 'Pacific', 'Central Indo-Pacific', 'Central and northern Great Barrier Reef', 'Australia', 'Queensland', 9.0, 6.0, 2017.0, 4.0, 'T')
+  (4, 2, 'Reef_Check', -19.1483333333333, 146.870277777778, 'Pacific', 'Central Indo-Pacific', 'Central and northern Great Barrier Reef', 'Australia', 'Queensland', 13.0, 6.0, 2009.0, 5.0, 'T')
+  (8, 2, 'Reef_Check', -18.9560555555556, 146.95625, 'Pacific', 'Central Indo-Pacific', 'Central and northern Great Barrier Reef', 'Australia', 'Queensland', 15.0, 5.0, 2005.0, 5.0, 'T')
+
+========================================================================
+TABLE: R_Scripts_tbl
+Columns: cid | name | type | notnull | default | primary_key
+0 | R_Scripts_ID | INTEGER | 1 | None | 1
+1 | Relevant_Papers_ID | INTEGER | 0 | 0 | 0
+2 | Project_Name | TEXT | 0 | None | 0
+3 | Paper_Title | TEXT | 0 | None | 0
+4 | Code_Name | VARCHAR(255) | 0 | None | 0
+5 | Description | TEXT | 0 | None | 0
+6 | Data_Source | TEXT | 0 | None | 0
+7 | R_Code | TEXT | 0 | None | 0
+8 | URL | TEXT | 0 | None | 0
+9 | TRIAL524 | CHAR(1) | 0 | None | 0
+Row count: 19
+Sample rows (up to 3):
+  (1, 4, "Identifying coral reef 'bright spots' from the global 2015-2017 thermal-stress event", 'A global analysis of the past two decades\r\ntwo decades', '0_get_CoRTAD_data', None, '4', '0_get_CoRTAD_data.Rmd', '#https://github.com/InstituteForGlobalEcology/Coral-bleaching-a-global-analysis-of-the-past-two-decades/blob/master/0_get_CoRTAD_data.Rmd#', 'T')
+  (2, 4, "Identifying coral reef 'bright spots' from the global 2015-2017 thermal-stress event", 'A global analysis of the past two decades\r\ntwo decades', '1_calculate_rate_of_SST_change', None, '4', '1_calculate_rate_of_SST_change.Rmd', '#https://github.com/InstituteForGlobalEcology/Coral-bleaching-a-global-analysis-of-the-past-two-decades/blob/master/1_calculate_rate_of_SST_change.Rmd#', 'T')
+  (3, 4, "Identifying coral reef 'bright spots' from the global 2015-2017 thermal-stress event", 'A global analysis of the past two decades\r\ntwo decades', '2_combine_Reef_Check_data_with_CoRTAD_variables_and_rate_of_SST_change', None, '4', '2_combine_Reef_Check_data_with_CoRTAD_variables_and_rate_of_SST_change.Rmd', '#https://github.com/InstituteForGlobalEcology/Coral-bleaching-a-global-analysis-of-the-past-two-decades/blob/master/2_combine_Reef_Check_data_with_CoRTAD_variables_and_rate_of_SST_change.Rmd#', 'T')
+
+========================================================================
+TABLE: Realm_Name_LUT
+Columns: cid | name | type | notnull | default | primary_key
+0 | Realm_ID | INTEGER | 1 | None | 1
+1 | Realm_Name | VARCHAR(255) | 0 | None | 0
+2 | TRIAL524 | CHAR(1) | 0 | None | 0
+Row count: 9
+Sample rows (up to 3):
+  (1, 'Central Indo-Pacific', 'T')
+  (2, 'Eastern Indo-Pacific', 'T')
+  (3, 'Temperate Australasia', 'T')
+
+========================================================================
+TABLE: Sample_Event_tbl
+Columns: cid | name | type | notnull | default | primary_key
+0 | Sample_ID | INTEGER | 1 | None | 1
+1 | Site_ID | INTEGER | 0 | 0 | 0
+2 | Reef_ID | VARCHAR(255) | 0 | None | 0
+3 | Date_Day | REAL | 0 | None | 0
+4 | Date_Month | REAL | 0 | None | 0
+5 | Date_Year | REAL | 0 | None | 0
+6 | Depth_m | REAL | 0 | None | 0
+7 | Quadrat_No | INTEGER | 0 | 0 | 0
+8 | Comments | VARCHAR(255) | 0 | None | 0
+9 | TRIAL528 | CHAR(1) | 0 | None | 0
+Row count: 27008
+Sample rows (up to 3):
+  (9623, 4606, b'', 8.0, 9.0, 2016.0, 5.0, None, b'', 'T')
+  (9624, 4607, b'', 2.0, 9.0, 2016.0, 10.0, None, b'', 'T')
+  (9625, 4608, b'', 29.0, 6.0, 2010.0, 5.0, None, b'', 'T')
+
+========================================================================
+TABLE: Severity_Code_LUT
+Columns: cid | name | type | notnull | default | primary_key
+0 | Severity_ID | INTEGER | 1 | 0 | 1
+1 | Severity_Code | VARCHAR(255) | 0 | None | 0
+2 | TRIAL531 | CHAR(1) | 0 | None | 0
+Row count: 5
+Sample rows (up to 3):
+  (-1, '% unknown', 'T')
+  (0, 'No Bleaching', 'T')
+  (1, 'Mild (1-10% Bleached)', 'T')
+
+========================================================================
+TABLE: Site_Info_tbl
+Columns: cid | name | type | notnull | default | primary_key
+0 | Site_ID | INTEGER | 1 | None | 1
+1 | Data_Source | INTEGER | 0 | 0 | 0
+2 | Latitude_Degrees | REAL | 0 | None | 0
+3 | Longitude_Degrees | REAL | 0 | None | 0
+4 | Ocean_Name | INTEGER | 0 | 0 | 0
+5 | Realm_Name | INTEGER | 0 | 0 | 0
+6 | Ecoregion_Name | INTEGER | 0 | 0 | 0
+7 | Country_Name | INTEGER | 0 | 0 | 0
+8 | State_Island_Province_Name | INTEGER | 0 | 0 | 0
+9 | City_Town_Name | INTEGER | 0 | 0 | 0
+10 | City_Town_Name_2 | INTEGER | 0 | 0 | 0
+11 | City_Town_Name_3 | INTEGER | 0 | 0 | 0
+12 | City_Town_Name_4 | INTEGER | 0 | 0 | 0
+13 | Site_Name | VARCHAR(255) | 0 | None | 0
+14 | Distance_to_Shore | REAL | 0 | None | 0
+15 | Exposure | REAL | 0 | None | 0
+16 | Turbidity | REAL | 0 | 0 | 0
+17 | Cyclone_Frequency | REAL | 0 | 0 | 0
+18 | Comments | VARCHAR(255) | 0 | None | 0
+19 | TRIAL534 | CHAR(1) | 0 | None | 0
+Row count: 14405
+Sample rows (up to 3):
+  (1, 5, -14.28, -170.715, 1, 2, 90, 94, 20, 3977, 960, 1038, 1039, b'', 105.68, 0.0, 0.0245, 52.544, 'Staghorn corals (Acropora formosa = A. muricata) have begun bleaching in the fringing reef pools of Tutuila, American Samoa.  As of 10/29/05, over 95% of A. formosa in Nuuuli pool, Tutuila, American Samoa are partly bleached.  Mike King reports similar bl', 'T')
+  (2, 5, -14.33, -170.5, 1, 2, 90, 94, 20, 3977, 960, 304, None, 'Slope', 6923.2, 2.0, 0.0251, 54.151228, b'', 'T')
+  (3, 4, 18.2483888888889, -63.0511388888889, 2, 7, 45, 2, 78, None, None, None, None, b'', 135.51, 2.0, 0.0, 86.047967, b'', 'T')
+
+========================================================================
+TABLE: State_Island_Province_Name_LUT
+Columns: cid | name | type | notnull | default | primary_key
+0 | State_Island_Province_ID | INTEGER | 1 | None | 1
+1 | State_Island_Province_Name | VARCHAR(255) | 0 | None | 0
+2 | TRIAL541 | CHAR(1) | 0 | None | 0
+Row count: 559
+Sample rows (up to 3):
+  (1, 'Abaco Islands', 'T')
+  (2, 'ABC Islands', 'T')
+  (3, 'Abu Dhabi', 'T')
+
+========================================================================
+TABLE: Subquery_1_Sites_and_Sample_Events
+Columns: cid | name | type | notnull | default | primary_key
+0 | Site_ID | INTEGER | 1 | None | 0
+1 | Sample_ID | INTEGER | 1 | None | 0
+2 | Data_Source | VARCHAR(255) | 0 | None | 0
+3 | Latitude_Degrees | REAL | 0 | None | 0
+4 | Longitude_Degrees | REAL | 0 | None | 0
+5 | Reef_ID | VARCHAR(255) | 0 | None | 0
+6 | Ocean_Name | VARCHAR(255) | 0 | None | 0
+7 | Realm_Name | VARCHAR(255) | 0 | None | 0
+8 | Country_Name | VARCHAR(255) | 0 | None | 0
+9 | Site_Name | VARCHAR(255) | 0 | None | 0
+10 | Date_Day | REAL | 0 | None | 0
+11 | Date_Month | REAL | 0 | None | 0
+12 | Date_Year | REAL | 0 | None | 0
+13 | Depth_m | REAL | 0 | None | 0
+14 | TRIAL554 | CHAR(1) | 0 | None | 0
+Row count: 27007
+Sample rows (up to 3):
+  (1, 10322084, 'Donner', -14.28, -170.715, None, 'Pacific', 'Eastern Indo-Pacific', 'United States', b'', 15.0, 10.0, 2005.0, None, 'T')
+  (2, 10322085, 'Donner', -14.33, -170.5, None, 'Pacific', 'Eastern Indo-Pacific', 'United States', 'Slope', 15.0, 1.0, 2008.0, 8.5, 'T')
+  (2, 10322086, 'Donner', -14.33, -170.5, None, 'Pacific', 'Eastern Indo-Pacific', 'United States', 'Slope', 15.0, 1.0, 2007.0, 8.5, 'T')
+
+========================================================================
+TABLE: Subquery_6_Calculated_Reef_Check_Segments
+Columns: cid | name | type | notnull | default | primary_key
+0 | Sample_ID | INTEGER | 0 | None | 0
+1 | Cover_ID | INTEGER | 1 | None | 0
+2 | Substrate_Name | VARCHAR(255) | 0 | None | 0
+3 | S1 | INTEGER | 0 | None | 0
+4 | Calculated_S1 | NUMERIC(28, 1) | 0 | None | 0
+5 | S2 | INTEGER | 0 | None | 0
+6 | Calculated_S2 | NUMERIC(28, 1) | 0 | None | 0
+7 | S3 | INTEGER | 0 | None | 0
+8 | Calculated_S3 | NUMERIC(28, 1) | 0 | None | 0
+9 | S4 | INTEGER | 0 | None | 0
+10 | Calculated_S4 | NUMERIC(28, 1) | 0 | None | 0
+11 | TRIAL564 | CHAR(1) | 0 | None | 0
+Row count: 28717
+Sample rows (up to 3):
+  (10307692, 39723, 'Hard Coral', 12, 30, 18, 45, 14, 35, 15, 37.5, 'T')
+  (10307693, 39724, 'Hard Coral', 2, 5, 6, 15, 3, 7.5, 7, 17.5, 'T')
+  (10307694, 39725, 'Hard Coral', 19, 47.5, 14, 35, 12, 30, 14, 35, 'T')
+
+========================================================================
+TABLE: Substrate_Type_LUT
+Columns: cid | name | type | notnull | default | primary_key
+0 | Substrate_ID | INTEGER | 1 | None | 1
+1 | Substrate_Name | VARCHAR(255) | 0 | None | 0
+2 | TRIAL541 | CHAR(1) | 0 | None | 0
+Row count: 3
+Sample rows (up to 3):
+  (1, 'Hard Coral', 'T')
+  (2, 'Fleshy Seaweed', 'T')
+  (3, 'Nutrient Indicator Algae', 'T')

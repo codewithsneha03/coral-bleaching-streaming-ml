@@ -1,0 +1,110 @@
+========================================================================
+1. DISTRIBUTION OF DUPLICATE COUNTS IN Bleaching_tbl
+   (How many Sample_IDs appear 2 times, 3 times, etc.)
+
+ rows_per_sample_id  how_many_sample_ids
+                  1                12766
+                  2                11038
+                  4                    1
+
+========================================================================
+2. DO DUPLICATE ROWS FOR THE SAME Sample_ID HAVE THE SAME Severity_Code?
+
+ severity_pattern  sample_ids_with_this_pattern
+all_same_severity                         11038
+   mixed_severity                             1
+
+========================================================================
+3. SAMPLE OF DUPLICATED Sample_IDs WITH DIFFERENT Severity_Codes
+   (If these exist, we need an aggregation strategy)
+
+ Bleaching_ID  Sample_ID  Severity_Code  Percent_Bleached bleach_intensity Bleaching_Prevalence_Score
+       216659   10323635              2              23.7             None                       None
+       216662   10323635              3              66.7             None                       None
+
+========================================================================
+4. SAMPLE OF DUPLICATED Sample_IDs WITH SAME Severity_Code
+   (Are they truly identical rows, or do other fields differ?)
+
+ Bleaching_ID  Sample_ID Bleaching_Level   S1   S2   S3   S4 Percent_Bleaching_Old_Method  Severity_Code Percent_Bleached Number__Bleached_Colonies bleach_intensity  Bleaching_Prevalence_Score TRIAL485
+         9735       9736            None None None None None                         None            2.0             None                      None             None                         NaN        T
+         9736       9736            None None None None None                         None            2.0             None                      None             None                         NaN        T
+         9766       9767            None None None None None                         None            3.0             None                      None             None                         NaN        T
+         9767       9767            None None None None None                         None            3.0             None                      None             None                         NaN        T
+         9776       9777            None None None None None                         None            2.0             None                      None             None                         NaN        T
+         9777       9777            None None None None None                         None            2.0             None                      None             None                         NaN        T
+         9797       9797            None None None None None                         None            0.0             None                      None             None                         NaN        T
+         9798       9797            None None None None None                         None            0.0             None                      None             None                         NaN        T
+         9826       9827            None None None None None                         None            0.0             None                      None             None                         NaN        T
+         9827       9827            None None None None None                         None            0.0             None                      None             None                         NaN        T
+         9993       9993            None None None None None                         None            0.0             None                      None             None                         NaN        T
+         9994       9993            None None None None None                         None            0.0             None                      None             None                         NaN        T
+        10075      10075            None None None None None                         None            3.0             None                      None             None                         NaN        T
+        10076      10075            None None None None None                         None            3.0             None                      None             None                         NaN        T
+        21088      21089            None None None None None                         None            NaN             None                      None             None                         4.0        T
+        21089      21089            None None None None None                         None            NaN             None                      None             None                         4.0        T
+        21120      21120            None None None None None                         None            NaN             None                      None             None                         1.0        T
+        21121      21120            None None None None None                         None            NaN             None                      None             None                         1.0        T
+        21156      21157            None None None None None                         None            NaN             None                      None             None                         2.0        T
+        21157      21157            None None None None None                         None            NaN             None                      None             None                         2.0        T
+
+========================================================================
+5. NULL-SEVERITY ROWS: DO THEY HAVE OTHER USABLE OUTCOME FIELDS?
+   (Can we rescue labels from Percent_Bleached, bleach_intensity, etc.?)
+
+ total_null_severity  has_percent_bleached  has_intensity  has_prevalence  has_level  has_bleached_colonies  has_any_outcome_field
+               27878                  5472            226              81      22325                    226                  27878
+
+========================================================================
+6. DISTRIBUTION OF Percent_Bleached WHERE Severity_Code IS NULL
+
+       pct_range   cnt
+            NULL 22406
+            1-10  2356
+           11-50  1460
+0 (no bleaching)  1397
+             >50   259
+
+========================================================================
+7. DISTRIBUTION OF Percent_Bleached FOR ALL ROWS
+
+       pct_range   cnt
+            NULL 25885
+            1-10  3464
+           11-50  2810
+0 (no bleaching)  1397
+             >50  1290
+
+========================================================================
+8. CROSS-TAB: Severity_Code × Percent_Bleached availability
+   (Do the two fields overlap, complement, or conflict?)
+
+severity  pct_status   cnt
+      -1    pct_NULL   530
+       0    pct_NULL   332
+       1    pct_NULL  1129
+       1 pct_present  1108
+       2    pct_NULL   657
+       2 pct_present  1350
+       3    pct_NULL   831
+       3 pct_present  1031
+    NULL    pct_NULL 22406
+    NULL pct_present  5472
+
+========================================================================
+9. CONSISTENCY: Severity_Code vs Percent_Bleached WHERE BOTH EXIST
+   Severity: 0=No bleaching, 1=1-10%, 2=11-50%, 3=>50%
+
+ Severity_Code  min_pct   avg_pct  max_pct  cnt
+             1     0.10  4.418224     10.0 1108
+             2    10.17 31.450461     50.0 1350
+             3    50.20 75.679705    100.0 1031
+
+========================================================================
+10. ENVIRONMENTAL DATA AVAILABILITY: labeled vs unlabeled rows
+    (Can we build features for the rows that have labels?)
+
+label_status  bleaching_rows  has_env_data
+has_pct_only            5482          5482
+has_severity            6984          6984
+    no_label           22412         22318

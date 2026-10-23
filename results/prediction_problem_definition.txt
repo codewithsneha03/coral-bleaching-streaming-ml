@@ -1,0 +1,89 @@
+# Prediction Problem Definition
+# Coral Bleaching Nowcasting from Environmental Conditions
+
+## What is a single prediction example?
+
+One prediction example = one coral reef sampling event where:
+- A field survey recorded bleaching status (severity or percent bleached)
+- Environmental measurements (SST, heat stress, etc.) were also recorded
+- The sampling location and date are known
+
+## What does the target mean?
+
+**Binary classification target: `bleached`**
+
+| Value | Meaning | Source |
+|---|---|---|
+| 1 | Bleaching was observed at this site during this survey | Severity_Code in {1,2,3} OR Percent_Bleached > 0 |
+| 0 | No bleaching was observed | Severity_Code = 0 OR Percent_Bleached = 0 |
+
+Records with unknown or ambiguous outcomes are excluded (not labeled as 0).
+
+## Which predictors are available?
+
+41 numeric features from three categories:
+
+1. **Temperature & heat stress** (34 features):
+   ClimSST, Temperature_Kelvin/Mean/Min/Max, SSTA and variants (anomaly,
+   DHW, frequency), TSA and variants. These describe the thermal
+   environment at the reef during the sampling period.
+
+2. **Site characteristics** (5 features):
+   Latitude_Degrees, Longitude_Degrees, Distance_to_Shore, Exposure,
+   Turbidity, Cyclone_Frequency.
+
+3. **Sampling conditions** (2 features):
+   Depth_m, Depth_m_missing (indicator for imputed depth).
+
+## Is prediction contemporaneous or anticipatory?
+
+**Contemporaneous (nowcasting).**
+
+Environmental features and bleaching observations come from the SAME
+sampling event.  The model answers: "Given these environmental conditions
+measured at a reef right now, is bleaching present?"
+
+This is NOT advance forecasting.  We are not predicting bleaching weeks
+or months ahead.  This distinction is critical for honest reporting.
+
+A nowcasting model is still useful: it can estimate bleaching at
+unvisited reefs where only satellite-derived environmental data is
+available, or screen sites for priority field surveys.
+
+## Chronological ordering
+
+Observations are sorted by sampling date (1980-2016).  The online
+learning model processes them sequentially.  This means:
+
+- The model is always evaluated on data it has not yet seen.
+- Performance reflects how well the model generalizes to future
+  conditions, not just random held-out data.
+- Concept drift (changing relationships over time) can be detected.
+
+## Site overlap between training and test
+
+Multiple observations can come from the same site across different years.
+In a strict spatial cross-validation, we would hold out entire sites.
+For the streaming experiment, we accept temporal hold-out (evaluate on
+future time periods) as the primary strategy, which is the natural
+regime for online learning.
+
+## Class imbalance
+
+- 85.5% positive (bleached) vs 14.5% negative (not bleached)
+- Ratio: 5.9:1
+- This is a real property of the data: surveys disproportionately
+  record bleaching events.
+- Evaluation must use precision, recall, and F1, not just accuracy.
+- A naive "always predict bleached" model gets 85.5% accuracy but
+  is useless.
+
+## Bleaching rate by decade
+
+- 1980s: 100% (only 44 observations -- too few to draw conclusions)
+- 1990s: 94.9% (1,701 observations)
+- 2000s: 83.1% (7,840 observations)
+- 2010s: 86.5% (2,304 observations)
+
+The rate varies over time, which may manifest as concept drift in the
+streaming model.

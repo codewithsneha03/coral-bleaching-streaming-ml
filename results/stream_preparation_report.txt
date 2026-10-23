@@ -1,0 +1,237 @@
+
+========================================================================
+STEP 1: Load dataset
+
+Loaded: 11,889 rows x 52 columns
+Rows with valid date: 11,889
+
+========================================================================
+STEP 2: Sort chronologically
+
+First observation: 1980-06-15 00:00:00
+Last observation:  2016-10-09 00:00:00
+Span: 13,265 days
+
+Observations per year:
+  1980:     2
+  1983:    15
+  1986:     3
+  1987:    18
+  1988:     6
+  1990:     3
+  1991:     7
+  1992:     8
+  1993:     9
+  1994:    19
+  1995:     6
+  1996:    27
+  1997:    20
+  1998:   855
+  1999:   747
+  2000:   615
+  2001:   726
+  2002:   859
+  2003:   443
+  2004:   223
+  2005: 2,598
+  2006: 1,077
+  2007:   256
+  2008:   511
+  2009:   532
+  2010:   533
+  2011:   264
+  2012:   260
+  2013:   238
+  2014:   190
+  2015:   297
+  2016:   522
+
+========================================================================
+STEP 3: Define feature columns
+
+Number of feature columns: 40
+Feature columns:
+  ClimSST
+  Cyclone_Frequency
+  Depth_m
+  Distance_to_Shore
+  Exposure
+  Latitude_Degrees
+  Longitude_Degrees
+  SSTA
+  SSTA_DHW
+  SSTA_DHWMax
+  SSTA_DHWMean
+  SSTA_DHW_Standard_Deviation
+  SSTA_Frequency
+  SSTA_FrequencyMax
+  SSTA_FrequencyMean
+  SSTA_Frequency_Standard_Deviation
+  SSTA_Maximum
+  SSTA_Mean
+  SSTA_Minimum
+  SSTA_Standard_Deviation
+  TSA
+  TSA_DHW
+  TSA_DHWMax
+  TSA_DHWMean
+  TSA_DHW_Standard_Deviation
+  TSA_Frequency
+  TSA_FrequencyMax
+  TSA_FrequencyMean
+  TSA_Frequency_Standard_Deviation
+  TSA_Maximum
+  TSA_Mean
+  TSA_Minimum
+  TSA_Standard_Deviation
+  Temperature_Kelvin
+  Temperature_Kelvin_Standard_Deviation
+  Temperature_Maximum
+  Temperature_Mean
+  Temperature_Minimum
+  Turbidity
+  Windspeed
+
+========================================================================
+STEP 4: Handle missing values
+
+  ClimSST                                             2 (  0.0%)
+  Depth_m                                         1,672 ( 14.1%)
+  SSTA                                               11 (  0.1%)
+  SSTA_DHW                                           11 (  0.1%)
+  SSTA_DHWMax                                         9 (  0.1%)
+  SSTA_DHWMean                                        9 (  0.1%)
+  SSTA_DHW_Standard_Deviation                         9 (  0.1%)
+  SSTA_Frequency                                     11 (  0.1%)
+  SSTA_FrequencyMax                                   9 (  0.1%)
+  SSTA_FrequencyMean                                  9 (  0.1%)
+  SSTA_Frequency_Standard_Deviation                   9 (  0.1%)
+  SSTA_Maximum                                        9 (  0.1%)
+  SSTA_Mean                                           9 (  0.1%)
+  SSTA_Minimum                                        9 (  0.1%)
+  SSTA_Standard_Deviation                             9 (  0.1%)
+  TSA                                                11 (  0.1%)
+  TSA_DHW                                            11 (  0.1%)
+  TSA_DHWMax                                          9 (  0.1%)
+  TSA_DHWMean                                         9 (  0.1%)
+  TSA_DHW_Standard_Deviation                          9 (  0.1%)
+  TSA_Frequency                                      11 (  0.1%)
+  TSA_FrequencyMax                                    9 (  0.1%)
+  TSA_FrequencyMean                                   9 (  0.1%)
+  TSA_Frequency_Standard_Deviation                    9 (  0.1%)
+  TSA_Maximum                                         9 (  0.1%)
+  TSA_Mean                                            9 (  0.1%)
+  TSA_Minimum                                         9 (  0.1%)
+  TSA_Standard_Deviation                              9 (  0.1%)
+  Temperature_Kelvin                                 11 (  0.1%)
+  Temperature_Kelvin_Standard_Deviation               9 (  0.1%)
+  Temperature_Maximum                                 9 (  0.1%)
+  Temperature_Mean                                    9 (  0.1%)
+  Temperature_Minimum                                 9 (  0.1%)
+  Turbidity                                           2 (  0.0%)
+  Windspeed                                           4 (  0.0%)
+
+  Depth_m: imputed 1,672 NaNs with median=7.5m
+  Added binary indicator: Depth_m_missing
+  ClimSST: imputed 2 NaNs with median=300.3100
+  SSTA: imputed 11 NaNs with median=0.3150
+  SSTA_DHW: imputed 11 NaNs with median=2.1400
+  SSTA_DHWMax: imputed 9 NaNs with median=14.8500
+  SSTA_DHWMean: imputed 9 NaNs with median=1.6000
+  SSTA_DHW_Standard_Deviation: imputed 9 NaNs with median=2.4600
+  SSTA_Frequency: imputed 11 NaNs with median=5.7500
+  SSTA_FrequencyMax: imputed 9 NaNs with median=22.0000
+  SSTA_FrequencyMean: imputed 9 NaNs with median=4.0000
+  SSTA_Frequency_Standard_Deviation: imputed 9 NaNs with median=4.2200
+  SSTA_Maximum: imputed 9 NaNs with median=3.1483
+  SSTA_Mean: imputed 9 NaNs with median=0.0000
+  SSTA_Minimum: imputed 9 NaNs with median=-3.4600
+  SSTA_Standard_Deviation: imputed 9 NaNs with median=1.0000
+  TSA: imputed 11 NaNs with median=-0.5100
+  TSA_DHW: imputed 11 NaNs with median=0.0000
+  TSA_DHWMax: imputed 9 NaNs with median=7.2500
+  TSA_DHWMean: imputed 9 NaNs with median=0.2900
+  TSA_DHW_Standard_Deviation: imputed 9 NaNs with median=0.9400
+  TSA_Frequency: imputed 11 NaNs with median=1.0000
+  TSA_FrequencyMax: imputed 9 NaNs with median=6.0000
+  TSA_FrequencyMean: imputed 9 NaNs with median=0.0000
+  TSA_Frequency_Standard_Deviation: imputed 9 NaNs with median=1.2700
+  TSA_Maximum: imputed 9 NaNs with median=2.4200
+  TSA_Mean: imputed 9 NaNs with median=-2.0000
+  TSA_Minimum: imputed 9 NaNs with median=-6.5700
+  TSA_Standard_Deviation: imputed 9 NaNs with median=1.7300
+  Temperature_Kelvin: imputed 11 NaNs with median=301.8500
+  Temperature_Kelvin_Standard_Deviation: imputed 9 NaNs with median=1.7300
+  Temperature_Maximum: imputed 9 NaNs with median=304.9200
+  Temperature_Mean: imputed 9 NaNs with median=300.2800
+  Temperature_Minimum: imputed 9 NaNs with median=295.9200
+  Turbidity: imputed 2 NaNs with median=0.0512
+  Windspeed: imputed 4 NaNs with median=5.0000
+
+Remaining missing values in features: 0
+
+========================================================================
+STEP 5: Build final stream
+
+Stream shape: 11,889 rows x 46 columns
+
+Target distribution in stream:
+  not_bleached (0): 1,722  (14.5%)
+  bleached (1): 10,167  (85.5%)
+
+Chronological order verified: True
+
+Bleaching rate by decade:
+  1980s:    44 obs, bleaching rate = 100.0%
+  1990s: 1,701 obs, bleaching rate = 94.9%
+  2000s: 7,840 obs, bleaching rate = 83.1%
+  2010s: 2,304 obs, bleaching rate = 86.5%
+
+========================================================================
+SAVING STREAM
+
+Saved: C:\Users\Sneha\Downloads\coral_bleaching_project_starter\coral_bleaching_project\data\processed\coral_stream.csv
+  11,889 rows x 46 columns
+
+FEATURE LIST (for model scripts):
+   1. ClimSST
+   2. Cyclone_Frequency
+   3. Depth_m
+   4. Distance_to_Shore
+   5. Exposure
+   6. Latitude_Degrees
+   7. Longitude_Degrees
+   8. SSTA
+   9. SSTA_DHW
+  10. SSTA_DHWMax
+  11. SSTA_DHWMean
+  12. SSTA_DHW_Standard_Deviation
+  13. SSTA_Frequency
+  14. SSTA_FrequencyMax
+  15. SSTA_FrequencyMean
+  16. SSTA_Frequency_Standard_Deviation
+  17. SSTA_Maximum
+  18. SSTA_Mean
+  19. SSTA_Minimum
+  20. SSTA_Standard_Deviation
+  21. TSA
+  22. TSA_DHW
+  23. TSA_DHWMax
+  24. TSA_DHWMean
+  25. TSA_DHW_Standard_Deviation
+  26. TSA_Frequency
+  27. TSA_FrequencyMax
+  28. TSA_FrequencyMean
+  29. TSA_Frequency_Standard_Deviation
+  30. TSA_Maximum
+  31. TSA_Mean
+  32. TSA_Minimum
+  33. TSA_Standard_Deviation
+  34. Temperature_Kelvin
+  35. Temperature_Kelvin_Standard_Deviation
+  36. Temperature_Maximum
+  37. Temperature_Mean
+  38. Temperature_Minimum
+  39. Turbidity
+  40. Windspeed
+  41. Depth_m_missing

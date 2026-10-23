@@ -1,0 +1,126 @@
+
+========================================================================
+STEP 1: Load and de-duplicate Bleaching_tbl
+
+Raw Bleaching_tbl rows: 34,846
+Distinct Sample_IDs:    23,805
+After de-duplication:    23,805 rows  (removed 11,041 duplicates)
+
+========================================================================
+STEP 2: Construct binary target
+
+Label distribution before filtering:
+  not_bleached (0): 1,722
+  bleached (1): 10,167
+  unlabelable (NaN): 11,916
+
+Rows with valid label:  11,889
+  bleached = 1: 10,167
+  bleached = 0: 1,722
+Rows excluded (no label): 11,916
+
+========================================================================
+STEP 3: Join with Sample_Event_tbl
+
+Sample_Event_tbl rows:  27,008
+After join with Sample_Event: 11,889 rows
+  Lost 0 labeled rows (no matching Sample_Event)
+
+========================================================================
+STEP 4: Join with Environmental_tbl
+
+Environmental_tbl raw rows: 26,962
+  Distinct Sample_IDs:      26,945
+  After de-dup (mean):      26,945 rows
+After join with Environmental: 11,889 rows
+
+========================================================================
+STEP 5: Join with Site_Info_tbl
+
+Site_Info_tbl rows: 14,405
+After join with Site_Info: 11,889 rows
+  Rows without site info: 0
+
+========================================================================
+STEP 6: Construct date column and select final columns
+
+Valid dates: 11,889 / 11,889
+Date range:  1980-06-15 00:00:00 to 2016-10-09 00:00:00
+
+Feature columns (40):
+  ClimSST                                        missing:      2 (  0.0%)
+  Cyclone_Frequency                              missing:      0 (  0.0%)
+  Depth_m                                        missing:  1,672 ( 14.1%)
+  Distance_to_Shore                              missing:      0 (  0.0%)
+  Exposure                                       missing:      0 (  0.0%)
+  Latitude_Degrees                               missing:      0 (  0.0%)
+  Longitude_Degrees                              missing:      0 (  0.0%)
+  SSTA                                           missing:     11 (  0.1%)
+  SSTA_DHW                                       missing:     11 (  0.1%)
+  SSTA_DHWMax                                    missing:      9 (  0.1%)
+  SSTA_DHWMean                                   missing:      9 (  0.1%)
+  SSTA_DHW_Standard_Deviation                    missing:      9 (  0.1%)
+  SSTA_Frequency                                 missing:     11 (  0.1%)
+  SSTA_FrequencyMax                              missing:      9 (  0.1%)
+  SSTA_FrequencyMean                             missing:      9 (  0.1%)
+  SSTA_Frequency_Standard_Deviation              missing:      9 (  0.1%)
+  SSTA_Maximum                                   missing:      9 (  0.1%)
+  SSTA_Mean                                      missing:      9 (  0.1%)
+  SSTA_Minimum                                   missing:      9 (  0.1%)
+  SSTA_Standard_Deviation                        missing:      9 (  0.1%)
+  TSA                                            missing:     11 (  0.1%)
+  TSA_DHW                                        missing:     11 (  0.1%)
+  TSA_DHWMax                                     missing:      9 (  0.1%)
+  TSA_DHWMean                                    missing:      9 (  0.1%)
+  TSA_DHW_Standard_Deviation                     missing:      9 (  0.1%)
+  TSA_Frequency                                  missing:     11 (  0.1%)
+  TSA_FrequencyMax                               missing:      9 (  0.1%)
+  TSA_FrequencyMean                              missing:      9 (  0.1%)
+  TSA_Frequency_Standard_Deviation               missing:      9 (  0.1%)
+  TSA_Maximum                                    missing:      9 (  0.1%)
+  TSA_Mean                                       missing:      9 (  0.1%)
+  TSA_Minimum                                    missing:      9 (  0.1%)
+  TSA_Standard_Deviation                         missing:      9 (  0.1%)
+  Temperature_Kelvin                             missing:     11 (  0.1%)
+  Temperature_Kelvin_Standard_Deviation          missing:      9 (  0.1%)
+  Temperature_Maximum                            missing:      9 (  0.1%)
+  Temperature_Mean                               missing:      9 (  0.1%)
+  Temperature_Minimum                            missing:      9 (  0.1%)
+  Turbidity                                      missing:      2 (  0.0%)
+  Windspeed                                      missing:      4 (  0.0%)
+
+========================================================================
+STEP 7: Final dataset summary
+
+Final dataset shape: 11,889 rows × 52 columns
+
+Target distribution:
+  not_bleached (0): 1,722  (14.5%)
+  bleached (1): 10,167  (85.5%)
+
+Class imbalance ratio: 5.9:1
+
+Year range: 1980 - 2016
+Distinct sites: 7,099
+Distinct countries: 73
+
+Overall feature missingness: 1,973 / 475,560 (0.4%)
+
+========================================================================
+STEP 8: Data-leakage audit
+
+[OK] No outcome/target-derivation columns in the feature set.
+
+Note on temporal alignment:
+  Environmental features (SST, SSTA, DHW, etc.) are recorded at
+  the SAME sampling event as the bleaching observation.
+  This means our model predicts bleaching status FROM concurrent
+  conditions — NOT in advance.  This is an honest 'nowcasting'
+  task: given today's environmental readings at a reef, is
+  bleaching present?  We will document this distinction clearly.
+
+========================================================================
+SAVING OUTPUTS
+
+Dataset saved: C:\Users\Sneha\Downloads\coral_bleaching_project_starter\coral_bleaching_project\data\processed\coral_bleaching_dataset.csv
+  11,889 rows × 52 columns
