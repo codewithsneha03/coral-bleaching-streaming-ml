@@ -1,0 +1,80 @@
+MODEL COMPARISON REPORT
+======================================================================
+Stream: 11,889 observations, chronological order
+Naive baseline (always predict 1): 0.8552 accuracy
+
+Config                        Acc    Prec     Rec      F1 Drifts    Time
+----------------------------------------------------------------------
+ARF_10trees                0.9245  0.9397  0.9741  0.9566     10   32.7s
+ARF_25trees                0.9318  0.9437  0.9787  0.9608      9   86.6s <-- BEST
+ARF_25trees_ADWIN          0.9318  0.9437  0.9787  0.9608      9   94.0s
+ARF_50trees_ADWIN          0.9310  0.9444  0.9769  0.9604      8  172.4s
+
+BEST MODEL: ARF_25trees
+  25 trees, faster splits (grace=30)
+
+BEST MODEL DETAILED METRICS
+======================================================================
+Accuracy:   0.9318
+Precision:  0.9437
+Recall:     0.9787
+F1 Score:   0.9608
+Improvement over naive: +0.0766
+
+CONFUSION MATRIX
+    0       1      
+0   1,128     594  
+1     217   9,949  
+
+CONCEPT DRIFT ANALYSIS
+======================================================================
+Drift events detected: 9
+
+  Index   1408  Year=1999  Date=1999-08-30  Acc=0.9837  F1=0.9917
+  Index   3296  Year=2002  Date=2002-03-15  Acc=0.9269  F1=0.9535
+  Index   3872  Year=2002  Date=2002-06-24  Acc=0.9230  F1=0.9512
+  Index   4768  Year=2005  Date=2005-05-15  Acc=0.9199  F1=0.9490
+  Index   7392  Year=2006  Date=2006-03-06  Acc=0.9459  F1=0.9686
+  Index   8576  Year=2008  Date=2008-04-03  Acc=0.9465  F1=0.9694
+  Index   9952  Year=2010  Date=2010-08-16  Acc=0.9341  F1=0.9618
+  Index  10624  Year=2012  Date=2012-10-09  Acc=0.9322  F1=0.9608
+  Index  11200  Year=2015  Date=2015-09-09  Acc=0.9304  F1=0.9598
+
+INTERPRETATION:
+  Each drift event indicates that ADWIN detected a statistically
+  significant change in the model's error rate. This can happen when:
+  - The data distribution changes (new ocean conditions, regions)
+  - The model encounters different bleaching patterns than before
+  - ARF responds by replacing poorly-performing trees with fresh ones
+
+PERFORMANCE BY YEAR (best model)
+----------------------------------------
+  1983:    15 obs, acc=1.000, bleach_rate=1.000
+  1987:    18 obs, acc=1.000, bleach_rate=1.000
+  1988:     6 obs, acc=1.000, bleach_rate=1.000
+  1991:     7 obs, acc=1.000, bleach_rate=1.000
+  1992:     8 obs, acc=1.000, bleach_rate=1.000
+  1993:     9 obs, acc=1.000, bleach_rate=1.000
+  1994:    19 obs, acc=1.000, bleach_rate=1.000
+  1995:     6 obs, acc=1.000, bleach_rate=1.000
+  1996:    27 obs, acc=1.000, bleach_rate=1.000
+  1997:    20 obs, acc=1.000, bleach_rate=1.000
+  1998:   855 obs, acc=0.996, bleach_rate=0.996
+  1999:   747 obs, acc=0.932, bleach_rate=0.889
+  2000:   615 obs, acc=0.875, bleach_rate=0.636
+  2001:   726 obs, acc=0.848, bleach_rate=0.446
+  2002:   859 obs, acc=0.920, bleach_rate=0.825
+  2003:   443 obs, acc=0.867, bleach_rate=0.661
+  2004:   223 obs, acc=0.942, bleach_rate=0.722
+  2005: 2,598 obs, acc=1.000, bleach_rate=1.000
+  2006: 1,077 obs, acc=0.958, bleach_rate=0.953
+  2007:   256 obs, acc=0.922, bleach_rate=0.922
+  2008:   511 obs, acc=0.793, bleach_rate=0.705
+  2009:   532 obs, acc=0.872, bleach_rate=0.786
+  2010:   533 obs, acc=0.916, bleach_rate=0.784
+  2011:   264 obs, acc=0.943, bleach_rate=0.894
+  2012:   260 obs, acc=0.842, bleach_rate=0.823
+  2013:   238 obs, acc=0.815, bleach_rate=0.735
+  2014:   190 obs, acc=0.958, bleach_rate=0.958
+  2015:   297 obs, acc=0.970, bleach_rate=0.919
+  2016:   522 obs, acc=0.948, bleach_rate=0.948
